@@ -5,3 +5,5 @@ export interface IUserData {
     password: string,
     confirm: string
 }
+
+export type ILoginData = Omit<Users, 'id'>

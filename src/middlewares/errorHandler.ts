@@ -4,7 +4,7 @@ export function errorHandler(error: Error | any, req: Request, res: Response, ne
     console.log(error);
 
     if(error.type === 'invalid_data') return res.status(409).send(error.message);
-    if(error.type === 'invalid_password') return res.status(409).send(error.message)
+    if(error.type === 'invalid_confirm_password') return res.status(422).send(error.message)
 
     return res.status(500).send(`Unexpected server error: ${error}`)
 }
