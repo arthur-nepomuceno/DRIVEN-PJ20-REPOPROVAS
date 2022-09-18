@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "dotenv -e .env.test prisma migrate dev && jest --no-cache",
+    "test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test prisma db seed && dotenv -e .env.test jest",
     "build": "tsc && npx prisma migrate deploy",
     "start": "ts-node src/server.ts",
     "dev": "nodemon src/server.ts"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
