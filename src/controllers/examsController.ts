@@ -23,6 +23,16 @@ async function postExam(req: Request, res: Response) {
     return res.status(201).send(register);
 }
 
+async function getExamsByDiscipline(req: Request, res: Response) {
+    const token: string | any = req.headers.authorization?.replace(/Bearer |'/g, '');
+    const userID = Number(await otherServices.decodeToken(token));
+
+    const disciplines = await examServices.findExamsByDiscipline();
+
+    return res.status(200).send(disciplines)
+}
+
 export {
     postExam,
+    getExamsByDiscipline,
 }

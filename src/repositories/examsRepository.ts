@@ -22,9 +22,34 @@ async function postExam(object: IExamData) {
     }})
 }
 
+async function getExams(){
+    return await prisma.exams.findMany();
+}
+
+async function getCategories() {
+    return await prisma.categories.findMany();
+}
+
+async function getTeachersDisciplines() {
+    return await prisma.teachersDisciplines.findMany();
+}
+
+async function getTeachers() {
+    return await prisma.teachers.findMany();
+}
+
+async function getDisciplines() {
+    return await prisma.disciplines.findMany();
+}
+
 export {
     getCategoryById,
     getTeacherDisciplineById,
     getExamByName,
-    postExam
+    postExam,
+    getExams,
+    getCategories,
+    getTeachersDisciplines,
+    getTeachers,
+    getDisciplines
 }
