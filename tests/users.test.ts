@@ -64,7 +64,7 @@ describe('[TEST] Route post/signup', () => {
   })
 })
 
-describe('[TEST] Router post/login', () => {
+describe('[TEST] Route post/login', () => {
 
     it('Return status 200 if user login correctly', async () => {
 
