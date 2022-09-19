@@ -4,33 +4,43 @@ import { prisma } from "../src/database/postgres"
 
 async function main() {
 
-    await prisma.terms.create({ data: { number: 1 } });
-    await prisma.terms.create({ data: { number: 2 } });
-    await prisma.terms.create({ data: { number: 3 } });
-    await prisma.terms.create({ data: { number: 4 } });
-    await prisma.terms.create({ data: { number: 5 } });
-    await prisma.terms.create({ data: { number: 6 } });
+    await prisma.terms.createMany({ data: [
+        { number: 1 }, 
+        { number: 2 },
+        { number: 3 },
+        { number: 4 },
+        { number: 5 },
+        { number: 6 }
+    ], skipDuplicates: true });
 
-    await prisma.categories.create({data: {name: 'Projeto'}});
-    await prisma.categories.create({data: {name: 'Prática'}});
-    await prisma.categories.create({data: {name: 'Recuperação'}});
+    await prisma.categories.createMany({data: [
+        {name: 'Projeto'},
+        {name: 'Prática'},
+        {name: 'Recuperação'}
+    ], skipDuplicates: true});
 
-    await prisma.teachers.create({data: {name: 'Diego Pinho'}})
-    await prisma.teachers.create({data: {name: 'Bruna Hamori'}})
+    await prisma.teachers.createMany({data: [
+        {name: 'Diego Pinho'},
+        {name: 'Bruna Hamori'}
+    ], skipDuplicates: true})
 
-    await prisma.disciplines.create({data: {name: 'HTML e CSS', termId: 1}})
-    await prisma.disciplines.create({data: {name: 'JavaScript', termId: 2}})
-    await prisma.disciplines.create({data: {name: 'React', termId: 3}})
-    await prisma.disciplines.create({data: {name: 'Humildade', termId: 1}})
-    await prisma.disciplines.create({data: {name: 'Planejamento', termId: 2}})
-    await prisma.disciplines.create({data: {name: 'Autoconfiança', termId: 3}})
+    await prisma.disciplines.createMany({data: [
+        {name: 'HTML e CSS', termId: 1},
+        {name: 'JavaScript', termId: 2},
+        {name: 'React', termId: 3},
+        {name: 'Humildade', termId: 1},
+        {name: 'Planejamento', termId: 2},
+        {name: 'Autoconfiança', termId: 3}
+    ], skipDuplicates: true})
 
-    await prisma.teachersDisciplines.create({data: {teacherId: 1, disciplineId: 1}});
-    await prisma.teachersDisciplines.create({data: {teacherId: 1, disciplineId: 2}});
-    await prisma.teachersDisciplines.create({data: {teacherId: 1, disciplineId: 3}});
-    await prisma.teachersDisciplines.create({data: {teacherId: 2, disciplineId: 4}});
-    await prisma.teachersDisciplines.create({data: {teacherId: 2, disciplineId: 5}});
-    await prisma.teachersDisciplines.create({data: {teacherId: 2, disciplineId: 6}});
+    await prisma.teachersDisciplines.createMany({data: [
+        {teacherId: 1, disciplineId: 1},
+        {teacherId: 1, disciplineId: 2},
+        {teacherId: 1, disciplineId: 3},
+        {teacherId: 2, disciplineId: 4},
+        {teacherId: 2, disciplineId: 5},
+        {teacherId: 2, disciplineId: 6}
+    ], skipDuplicates: true});
 };
 
 main()
